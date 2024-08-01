@@ -1,0 +1,45 @@
+{
+  "name": "video-call-client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier \"src/**/**.{js,jsx,ts,tsx}\" --write"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@hookform/resolvers": "^3.9.0",
+    "@mui/icons-material": "^5.16.4",
+    "@mui/material": "^5.16.4",
+    "@tanstack/react-query": "^5.51.11",
+    "@tanstack/react-query-devtools": "^5.51.11",
+    "@tanstack/react-virtual": "^3.8.3",
+    "axios": "^1.7.2",
+    "classnames": "^2.5.1",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.4.5",
+    "jose": "^5.6.3",
+    "next": "14.2.5",
+    "next-auth": "^4.24.7",
+    "peerjs": "^1.5.4",
+    "react": "^18",
+    "react-copy-to-clipboard": "^5.1.0",
+    "react-dom": "^18",
+    "react-hook-form": "^7.52.1",
+    "socket.io-client": "^4.7.5",
+    "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.11",
+    "@types/react-copy-to-clipboard": "^5.0.7",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.1"
+  }
+}
