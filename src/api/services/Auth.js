@@ -10,4 +10,8 @@ export class AuthService {
     signUp = async (signUpData) => {
         return (await apiClient.post(`/${Entity}/register`, signUpData)).data;
     };
+
+    refresh = async (refreshToken) => {
+        return (await apiClient.post('/refresh', refreshToken)).data;
+    }
 }

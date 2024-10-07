@@ -13,3 +13,17 @@ export function formatTimeHHMM(milliseconds) {
     hour12: false,
   });
 }
+
+export const generateRoomName = (alphabet = 'abcdefghijklmnopqrstuvwxyz') => {
+  let result = '';
+
+  const alphabetLength = alphabet.length;
+
+  while (result.length < 11) {
+    if (result.length > 0 && result.length % 4 === 3) result+= '-';
+
+    result+= alphabet.charAt(Math.floor(Math.random() * alphabetLength));
+  }
+
+  return result;
+}

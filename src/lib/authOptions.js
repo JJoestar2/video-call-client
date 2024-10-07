@@ -24,6 +24,7 @@ export const authOptions = {
                    if (userData) return {
                         id: userData.user.sub,
                         accessToken: userData.accessToken,
+                        refreshToken: userData.refreshToken,
                         name: userData.user.name,
                         email: userData.user.email,
                         image: userData.user.avatar,
@@ -53,6 +54,7 @@ export const authOptions = {
                 return {
                     sub: user?.id,
                     accessToken: user?.accessToken,
+                    refreshToken: user?.refreshToken,
                     name: user?.name,
                     email: user?.email,
                     image: user?.image
@@ -65,7 +67,30 @@ export const authOptions = {
                 Date.now() < (decodeJwt(token.accessToken).exp || 0) * 1000
               ) {
                 return token;
-              }
+            }
+
+            try {
+                if (!token.refreshToken) {
+                    throw new Error('Refresh Token Needed!');
+                }
+
+                const { accessToken } = await Api.Auth.refresh(token.refreshToken);
+
+                if (!accessToken) {
+                    throw new Error('Error occured during refreshing the tokens')
+                }
+
+                return {
+                    ...token,
+                    accessToken,
+                }
+            } catch (err) {
+                console.error(e);
+                return {
+                  ...token,
+                  error: e?.message ?? 'Auth Error',
+                };
+            }
         },
         async session({ session, token }) {
             session.user.id = token.sub;

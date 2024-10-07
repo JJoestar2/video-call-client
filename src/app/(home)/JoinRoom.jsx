@@ -5,16 +5,15 @@ import { useRouter } from 'next/navigation';
 
 import { Paper, Button, TextField } from '@mui/material';
 
+import { generateRoomName } from '../../utils/index';
+
 const JoinRoom = () => {
   const [name, setName] = useState('');
   const router = useRouter();
 
   const joinRoom = () => router.push(`/room/${name}`);
 
-  const createRoom = () => {
-    const test = 'tes-trc-asa';
-    router.push(`/room/${test}`);
-  };
+  const createRoom = () => router.push(`/room/${generateRoomName()}`);
 
   return (
       <Paper className='mt-4'>
